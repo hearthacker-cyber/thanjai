@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Products | Thanjai Frozen Foods - Authentic Indian Taste</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Additional styles for products page */
+        .products-hero {
+            background: linear-gradient(135deg, 
+                rgba(255, 154, 60, 0.1) 0%, 
+                rgba(255, 111, 60, 0.2) 100%);
+            padding: 100px 0 50px;
+            margin-top: 80px;
+            text-align: center;
+        }
+        
+        .product-detail-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 20px 50px rgba(139, 69, 19, 0.1);
+            margin-bottom: 2rem;
+            border: 1px solid var(--light-cream);
+        }
+        
+        .product-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .info-item {
+            background: var(--light-cream);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border-left: 4px solid var(--primary-orange);
+        }
+        
+        .info-item h5 {
+            color: var(--secondary-spice);
+            margin-bottom: 0.5rem;
+        }
+        
+        .pricing-card {
+            background: linear-gradient(135deg, var(--primary-gold), var(--primary-orange));
+            color: white;
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .price {
+            font-size: 3rem;
+            font-weight: 800;
+            margin: 1rem 0;
+        }
+        
+        .price-unit {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            border: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+        
+        .whatsapp-btn:hover {
+            background: #128C7E;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+            color: white;
+        }
+        
+        .bulk-order-card {
+            background: white;
+            border: 2px solid var(--accent-green);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .bulk-order-card h4 {
+            color: var(--accent-green);
+            margin-bottom: 1rem;
+        }
+        
+        .order-steps {
+            display: flex;
+            justify-content: space-between;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .step {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(139, 69, 19, 0.08);
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-gold), var(--primary-orange));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.5rem;
+            margin: 0 auto 1rem;
+        }
+        
+        .faq-section {
+            background: var(--light-cream);
+            padding: 5rem 0;
+            margin-top: 3rem;
+        }
+        
+        .faq-item {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 5px 15px rgba(139, 69, 19, 0.05);
+        }
+        
+        .faq-question {
+            color: var(--secondary-spice);
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-answer {
+            color: var(--text-medium);
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--light-cream);
+        }
+        
+        .product-specs {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .spec-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .spec-table th {
+            background: var(--light-cream);
+            padding: 1rem;
+            text-align: left;
+            color: var(--secondary-spice);
+            border-bottom: 2px solid var(--primary-orange);
+        }
+        
+        .spec-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--light-cream);
+            color: var(--text-medium);
+        }
+        
+        .spec-table tr:hover {
+            background: rgba(255, 154, 60, 0.05);
+        }
+        
+        .storage-tips {
+            background: linear-gradient(135deg, rgba(58, 125, 52, 0.1), rgba(93, 187, 99, 0.1));
+            border-left: 4px solid var(--accent-green);
+            padding: 2rem;
+            border-radius: 0 15px 15px 0;
+            margin: 2rem 0;
+        }
+        
+        .product-highlight {
+            background: linear-gradient(135deg, rgba(255, 204, 41, 0.1), rgba(255, 154, 60, 0.1));
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--accent-yellow);
+        }
+        
+        @media (max-width: 768px) {
+            .products-hero {
+                padding: 80px 0 30px;
+                margin-top: 70px;
+            }
+            
+            .order-steps {
+                flex-direction: column;
+            }
+            
+            .product-detail-card {
+                padding: 1.5rem;
+            }
+            
+            .pricing-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <div class="brand-logo">
+                    <i class="bi bi-snow2"></i>
+                    <span>Thanjai</span>
+                </div>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="products.html">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item ms-3">
+                        <a href="#order" class="btn btn-order">
+                            <i class="bi bi-cart-check me-2"></i>Order Now
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Products Hero -->
+    <section class="products-hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <span class="section-tag">Premium Quality</span>
+                    <h1 class="hero-title">Our Premium Frozen Food Collection</h1>
+                    <p class="lead">Authentic Indian flavors, frozen at peak freshness. Each product is crafted with traditional recipes and modern freezing technology.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Filters -->
+    <section class="py-4 bg-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="d-flex flex-wrap justify-content-center gap-3">
+                        <button class="btn btn-filter active" data-filter="all">All Products</button>
+                        <button class="btn btn-filter" data-filter="samosa">Frozen Samosa</button>
+                        <button class="btn btn-filter" data-filter="parotta">Frozen Parotta</button>
+                        <button class="btn btn-filter" data-filter="coconut">Frozen Coconut</button>
+                        <button class="btn btn-filter" data-filter="best-seller">Best Sellers</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- All Products -->
+    <section class="products-section">
+        <div class="container">
+            <div class="row g-4" id="productGrid">
+                <!-- Product 1: Frozen Samosa -->
+                <div class="col-lg-4 col-md-6 product-item" data-category="samosa best-seller">
+                    <div class="product-card featured">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Frozen Samosa">
+                            <div class="product-badge">Bestseller</div>
+                        </div>
+                        <div class="product-content">
+                            <h3>Frozen Samosa</h3>
+                            <p>Crispy golden pastry filled with perfectly spiced potatoes and peas. Ready to cook in minutes.</p>
+                            <ul class="product-features">
+                                <li><i class="bi bi-check"></i> 100% Vegetarian</li>
+                                <li><i class="bi bi-check"></i> Ready in 15 minutes</li>
+                                <li><i class="bi bi-check"></i> No artificial preservatives</li>
+                            </ul>
+                            <div class="product-meta">
+                                <span class="pack-size">From $12.99</span>
+                                <button class="btn-view" data-product="samosa">
+                                    Order Now <i class="bi bi-whatsapp"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2: Frozen Parotta -->
+                <div class="col-lg-4 col-md-6 product-item" data-category="parotta best-seller">
+                    <div class="product-card popular">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Frozen Parotta">
+                            <div class="product-badge">Most Popular</div>
+                        </div>
+                        <div class="product-content">
+                            <h3>Frozen Parotta</h3>
+                            <p>Flaky, layered Indian flatbread with authentic texture. Pre-cooked and frozen for convenience.</p>
+                            <ul class="product-features">
+                                <li><i class="bi bi-check"></i> Easy to prepare</li>
+                                <li><i class="bi bi-check"></i> Authentic recipe</li>
+                                <li><i class="bi bi-check"></i> Long shelf life</li>
+                            </ul>
+                            <div class="product-meta">
+                                <span class="pack-size">From $8.99</span>
+                                <button class="btn-view" data-product="parotta">
+                                    Order Now <i class="bi bi-whatsapp"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3: Frozen Coconut -->
+                <div class="col-lg-4 col-md-6 product-item" data-category="coconut">
+                    <div class="product-card new">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1628992682633-bf2d40cb595f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Frozen Coconut">
+                            <div class="product-badge">New Arrival</div>
+                        </div>
+                        <div class="product-content">
+                            <h3>Frozen Coconut</h3>
+                            <p>Premium grated coconut, flash-frozen to retain natural moisture and flavor for authentic dishes.</p>
+                            <ul class="product-features">
+                                <li><i class="bi bi-check"></i> Preserved freshness</li>
+                                <li><i class="bi bi-check"></i> No additives</li>
+                                <li><i class="bi bi-check"></i> Convenient packaging</li>
+                            </ul>
+                            <div class="product-meta">
+                                <span class="pack-size">From $6.99</span>
+                                <button class="btn-view" data-product="coconut">
+                                    Order Now <i class="bi bi-whatsapp"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Product Information -->
+    <section class="py-5 bg-light-cream" id="order">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="product-detail-card">
+                        <div class="row align-items-center">
+                            <div class="col-md-6">
+                                <div class="product-highlight">
+                                    <h4><i class="bi bi-star-fill text-warning me-2"></i>Why Choose Our Products?</h4>
+                                    <p class="mb-0">Authentic taste, premium quality, and convenient frozen format for busy Canadian families.</p>
+                                </div>
+                                <div class="product-info-grid">
+                                    <div class="info-item">
+                                        <h5><i class="bi bi-shield-check text-success me-2"></i>Quality</h5>
+                                        <p class="mb-0">CFIA approved, HACCP certified facility</p>
+                                    </div>
+                                    <div class="info-item">
+                                        <h5><i class="bi bi-snow text-primary me-2"></i>Freshness</h5>
+                                        <p class="mb-0">Flash frozen at peak freshness</p>
+                                    </div>
+                                    <div class="info-item">
+                                        <h5><i class="bi bi-truck text-info me-2"></i>Delivery</h5>
+                                        <p class="mb-0">Canada-wide shipping available</p>
+                                    </div>
+                                    <div class="info-item">
+                                        <h5><i class="bi bi-heart text-danger me-2"></i>Natural</h5>
+                                        <p class="mb-0">No artificial colors or preservatives</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="pricing-card">
+                                    <h3>Easy Ordering</h3>
+                                    <p>Order directly via WhatsApp for fastest response</p>
+                                    <div class="price">Order Now</div>
+                                    <p>Get instant confirmation and delivery updates</p>
+                                    <button class="whatsapp-btn" id="whatsappOrderBtn">
+                                        <i class="bi bi-whatsapp"></i> Chat on WhatsApp
+                                    </button>
+                                    <p class="mt-3 small">Mon-Fri: 9AM-6PM EST</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Specifications -->
+                    <div class="product-specs">
+                        <h3 class="section-title mb-4">Product Specifications</h3>
+                        <div class="table-responsive">
+                            <table class="spec-table">
+                                <thead>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Pack Size</th>
+                                        <th>Shelf Life</th>
+                                        <th>Storage</th>
+                                        <th>Certifications</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Frozen Samosa</strong></td>
+                                        <td>1kg, 2kg packs</td>
+                                        <td>18 months</td>
+                                        <td>-18°C or below</td>
+                                        <td>CFIA, HACCP</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Frozen Parotta</strong></td>
+                                        <td>10, 20 pieces</td>
+                                        <td>18 months</td>
+                                        <td>-18°C or below</td>
+                                        <td>CFIA, HACCP</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Frozen Coconut</strong></td>
+                                        <td>500g, 1kg packs</td>
+                                        <td>24 months</td>
+                                        <td>-18°C or below</td>
+                                        <td>CFIA, Organic</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Storage Tips -->
+                    <div class="storage-tips">
+                        <h4><i class="bi bi-info-circle me-2"></i>Storage & Handling Tips</h4>
+                        <ul class="mt-3">
+                            <li>Store at -18°C or below in freezer</li>
+                            <li>Do not refreeze after thawing</li>
+                            <li>Keep frozen until ready to use</li>
+                            <li>Cook from frozen for best results</li>
+                            <li>Consume within 24 hours of thawing</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <!-- Bulk Order Card -->
+                    <div class="bulk-order-card">
+                        <h4><i class="bi bi-building me-2"></i>Bulk Orders</h4>
+                        <p>For restaurants, caterers, institutions, and wholesale buyers.</p>
+                        <ul class="mt-3">
+                            <li>Custom packaging available</li>
+                            <li>Volume discounts</li>
+                            <li>Regular delivery schedules</li>
+                            <li>Dedicated account manager</li>
+                        </ul>
+                        <button class="whatsapp-btn mt-3" id="whatsappBulkBtn">
+                            <i class="bi bi-whatsapp"></i> Inquire Bulk Prices
+                        </button>
+                    </div>
+
+                    <!-- Order Steps -->
+                    <div class="order-steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <h5>Choose Product</h5>
+                            <p class="small">Select your preferred product and quantity</p>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <h5>WhatsApp Order</h5>
+                            <p class="small">Message us your order details via WhatsApp</p>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <h5>Receive Delivery</h5>
+                            <p class="small">Get delivery at your doorstep across Canada</p>
+                        </div>
+                    </div>
+
+                    <!-- Delivery Info -->
+                    <div class="info-item">
+                        <h5><i class="bi bi-truck text-info me-2"></i>Delivery Information</h5>
+                        <p class="mb-2"><strong>Shipping:</strong> Across Canada</p>
+                        <p class="mb-2"><strong>Processing:</strong> 24-48 hours</p>
+                        <p class="mb-2"><strong>Delivery:</strong> 3-7 business days</p>
+                        <p class="mb-0"><strong>Free shipping:</strong> Orders over $99</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order via WhatsApp Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content text-center">
+                <h2>Order Directly via WhatsApp</h2>
+                <p>Fastest way to place your order. Get instant confirmation and delivery updates.</p>
+                <div class="cta-buttons">
+                    <button class="btn btn-primary btn-lg" id="whatsappCtaBtn">
+                        <i class="bi bi-whatsapp me-2"></i>Order on WhatsApp
+                    </button>
+                    <a href="contact.html" class="btn btn-secondary btn-lg">
+                        <i class="bi bi-telephone me-2"></i>Call Us
+                    </a>
+                </div>
+                <p class="mt-3 small">Clicking will open WhatsApp with pre-filled order message</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-subtitle">Find answers to common questions about our products and ordering process</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            How do I order via WhatsApp?
+                            <i class="bi bi-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Simply click any "Order Now" button on our website. This will open WhatsApp with a pre-filled message containing product details. Just send the message and our team will respond within minutes to confirm your order and provide pricing.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            What are your delivery areas?
+                            <i class="bi bi-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            We deliver across Canada including Toronto, Vancouver, Montreal, Calgary, Ottawa, Edmonton, Winnipeg, and all major cities. Shipping is available to both residential and commercial addresses.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            How do I store your frozen products?
+                            <i class="bi bi-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Store at -18°C or below in your freezer. Keep products frozen until ready to use. Do not refreeze after thawing. For best results, cook from frozen state.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            Do you offer bulk discounts?
+                            <i class="bi bi-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Yes! We offer volume discounts for restaurants, caterers, and wholesale buyers. Contact us via WhatsApp for bulk pricing and custom packaging options.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            What payment methods do you accept?
+                            <i class="bi bi-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            We accept e-transfer, credit cards, and cash on delivery (available in select areas). Payment details are shared after order confirmation via WhatsApp.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-brand">
+                        <div class="brand-logo">
+                            <i class="bi bi-snow2"></i>
+                            <span>Thanjai</span>
+                        </div>
+                        <p class="mt-3">Premium frozen foods bringing authentic Indian flavors to Canadian tables since 2010.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="bi bi-facebook"></i></a>
+                            <a href="#"><i class="bi bi-instagram"></i></a>
+                            <a href="#"><i class="bi bi-twitter"></i></a>
+                            <a href="#"><i class="bi bi-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-4 mb-4">
+                    <h5>Our Products</h5>
+                    <ul class="footer-links">
+                        <li><a href="products.html">Frozen Samosa</a></li>
+                        <li><a href="products.html">Frozen Parotta</a></li>
+                        <li><a href="products.html">Frozen Coconut</a></li>
+                        <li><a href="products.html">All Products</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-4 mb-4">
+                    <h5>Contact Info</h5>
+                    <ul class="footer-links">
+                        <li><i class="bi bi-geo-alt me-2"></i> Toronto, Ontario</li>
+                        <li><i class="bi bi-telephone me-2"></i> +1 (416) 555-7890</li>
+                        <li><i class="bi bi-envelope me-2"></i> info@thanjai.ca</li>
+                        <li><i class="bi bi-clock me-2"></i> Mon-Fri: 9AM-6PM EST</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <p class="mb-0">&copy; 2023 Thanjai Frozen Foods. All rights reserved.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="footer-bottom-links">
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms of Service</a></li>
+                            <li><a href="#">Cookie Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Order Modal -->
+    <div class="modal fade" id="whatsappModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Order via WhatsApp</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                        <i class="bi bi-whatsapp text-success" style="font-size: 3rem;"></i>
+                        <h4 class="mt-3">Ready to Order?</h4>
+                        <p>Click the button below to open WhatsApp and send your order details.</p>
+                        <div class="mt-4">
+                            <a href="https://wa.me/14165557890?text=Hello%20Thanjai%20Frozen%20Foods!%20I%20would%20like%20to%20place%20an%20order." 
+                               class="whatsapp-btn" target="_blank">
+                                <i class="bi bi-whatsapp"></i> Open WhatsApp
+                            </a>
+                        </div>
+                        <p class="mt-3 small text-muted">Make sure WhatsApp is installed on your device</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+    <script>
+        // WhatsApp Integration Script
+        document.addEventListener('DOMContentLoaded', function() {
+            // Default WhatsApp number (Canadian format)
+            const whatsappNumber = "14165557890"; // +1 (416) 555-7890
+            
+            // Function to create WhatsApp order link
+            function createWhatsAppLink(productName = "", productType = "") {
+                let message = "Hello Thanjai Frozen Foods! I would like to place an order.";
+                
+                if (productName) {
+                    message += `\n\nProduct: ${productName}`;
+                }
+                if (productType) {
+                    message += `\nType: ${productType}`;
+                }
+                
+                message += `\n\nPlease contact me with pricing and delivery options.`;
+                message += `\n\nThank you!`;
+                
+                // Encode the message for URL
+                const encodedMessage = encodeURIComponent(message);
+                
+                // Create WhatsApp URL
+                return `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+            }
+            
+            // Function to open WhatsApp
+            function openWhatsApp(productName = "", productType = "") {
+                const link = createWhatsAppLink(productName, productType);
+                window.open(link, '_blank');
+            }
+            
+            // Product-specific order buttons
+            document.querySelectorAll('[data-product]').forEach(button => {
+                button.addEventListener('click', function() {
+                    const product = this.getAttribute('data-product');
+                    let productName = "";
+                    let productType = "";
+                    
+                    switch(product) {
+                        case 'samosa':
+                            productName = "Frozen Samosa";
+                            productType = "1kg/2kg packs";
+                            break;
+                        case 'parotta':
+                            productName = "Frozen Parotta";
+                            productType = "10/20 pieces";
+                            break;
+                        case 'coconut':
+                            productName = "Frozen Coconut";
+                            productType = "500g/1kg packs";
+                            break;
+                    }
+                    
+                    openWhatsApp(productName, productType);
+                });
+            });
+            
+            // Main WhatsApp order button
+            document.getElementById('whatsappOrderBtn')?.addEventListener('click', function() {
+                openWhatsApp();
+            });
+            
+            // Bulk order button
+            document.getElementById('whatsappBulkBtn')?.addEventListener('click', function() {
+                const message = "Hello Thanjai Frozen Foods! I would like to inquire about bulk/wholesale pricing.";
+                const encodedMessage = encodeURIComponent(message);
+                window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
+            });
+            
+            // CTA WhatsApp button
+            document.getElementById('whatsappCtaBtn')?.addEventListener('click', function() {
+                openWhatsApp();
+            });
+            
+            // Filter buttons functionality
+            const filterButtons = document.querySelectorAll('.btn-filter');
+            const productItems = document.querySelectorAll('.product-item');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const filter = this.getAttribute('data-filter');
+                    
+                    // Show/hide products based on filter
+                    productItems.forEach(item => {
+                        if (filter === 'all' || item.getAttribute('data-category').includes(filter)) {
+                            item.style.display = 'block';
+                            setTimeout(() => {
+                                item.style.opacity = '1';
+                                item.style.transform = 'scale(1)';
+                            }, 10);
+                        } else {
+                            item.style.opacity = '0';
+                            item.style.transform = 'scale(0.8)';
+                            setTimeout(() => {
+                                item.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+            
+            // FAQ toggle function
+            window.toggleFAQ = function(element) {
+                const answer = element.nextElementSibling;
+                const icon = element.querySelector('i');
+                
+                if (answer.style.display === 'block') {
+                    answer.style.display = 'none';
+                    icon.classList.remove('bi-chevron-up');
+                    icon.classList.add('bi-chevron-down');
+                } else {
+                    answer.style.display = 'block';
+                    icon.classList.remove('bi-chevron-down');
+                    icon.classList.add('bi-chevron-up');
+                }
+            };
+            
+            // Initialize all FAQ answers as hidden
+            document.querySelectorAll('.faq-answer').forEach(answer => {
+                answer.style.display = 'none';
+            });
+            
+            // Add animation to product cards on scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            productItems.forEach(item => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(30px)';
+                item.style.transition = 'all 0.6s ease';
+                observer.observe(item);
+            });
+        });
+        
+        // Simple WhatsApp order function for direct calls
+        function orderViaWhatsApp(productName = "", price = "") {
+            let message = `Hello Thanjai Frozen Foods! I would like to order:\n\n`;
+            
+            if (productName) {
+                message += `Product: ${productName}\n`;
+            }
+            if (price) {
+                message += `Price Range: ${price}\n`;
+            }
+            
+            message += `\nPlease contact me with availability and delivery options to my location in Canada.\n\nThank you!`;
+            
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/14165557890?text=${encodedMessage}`;
+            
+            window.open(whatsappUrl, '_blank');
+            return false;
+        }
+    </script>
+</body>
+</html>
