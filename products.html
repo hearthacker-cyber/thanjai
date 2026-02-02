@@ -3,234 +3,449 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Products | Thanjai Frozen Foods - Authentic Indian Taste</title>
+    <title>Our Products | TANJO Premium Foods - Authentic Indian Taste</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Additional styles for products page */
+        /* Products Page Specific Styles */
         .products-hero {
             background: linear-gradient(135deg, 
-                rgba(255, 154, 60, 0.1) 0%, 
-                rgba(255, 111, 60, 0.2) 100%);
-            padding: 100px 0 50px;
+                rgba(255, 107, 53, 0.1) 0%, 
+                rgba(255, 209, 102, 0.2) 100%);
+            padding: 120px 0 60px;
             margin-top: 80px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
-        
+
+        .products-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') no-repeat center/cover;
+            opacity: 0.05;
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 30% 100%);
+        }
+
+        .product-filters {
+            padding: 40px 0;
+            background: white;
+            box-shadow: 0 10px 30px rgba(139, 69, 19, 0.1);
+            position: sticky;
+            top: 80px;
+            z-index: 100;
+        }
+
+        .btn-filter {
+            background: var(--primary-cream);
+            color: var(--primary-brown);
+            padding: 12px 30px;
+            border: 2px solid var(--primary-cream);
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn-filter.active,
+        .btn-filter:hover {
+            background: var(--gradient-primary);
+            color: white;
+            border-color: var(--primary-orange);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 107, 53, 0.3);
+        }
+
+        .product-detail-section {
+            padding: 100px 0;
+            background: var(--primary-cream);
+            position: relative;
+        }
+
+        .product-detail-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradient-primary);
+        }
+
         .product-detail-card {
             background: white;
-            border-radius: 20px;
-            padding: 2.5rem;
-            box-shadow: 0 20px 50px rgba(139, 69, 19, 0.1);
-            margin-bottom: 2rem;
-            border: 1px solid var(--light-cream);
+            border-radius: 25px;
+            padding: 50px;
+            box-shadow: 0 30px 60px rgba(139, 69, 19, 0.15);
+            margin-bottom: 40px;
+            border: 2px solid var(--primary-cream);
+            position: relative;
+            overflow: hidden;
         }
-        
+
+        .product-detail-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradient-primary);
+        }
+
         .product-info-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
         }
-        
+
         .info-item {
-            background: var(--light-cream);
-            padding: 1.5rem;
-            border-radius: 15px;
-            border-left: 4px solid var(--primary-orange);
-        }
-        
-        .info-item h5 {
-            color: var(--secondary-spice);
-            margin-bottom: 0.5rem;
-        }
-        
-        .pricing-card {
-            background: linear-gradient(135deg, var(--primary-gold), var(--primary-orange));
-            color: white;
+            background: var(--primary-cream);
+            padding: 25px;
             border-radius: 20px;
-            padding: 2rem;
+            border-left: 5px solid var(--primary-orange);
+            transition: all 0.3s ease;
+        }
+
+        .info-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(139, 69, 19, 0.1);
+        }
+
+        .info-item h5 {
+            color: var(--primary-red);
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .pricing-card {
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: 25px;
+            padding: 40px;
             text-align: center;
+            box-shadow: 0 20px 50px rgba(255, 107, 53, 0.3);
+            position: relative;
+            overflow: hidden;
         }
-        
+
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+        }
+
         .price {
-            font-size: 3rem;
-            font-weight: 800;
-            margin: 1rem 0;
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin: 20px 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
         }
-        
+
         .price-unit {
-            font-size: 1.2rem;
-            opacity: 0.9;
+            font-size: 1.3rem;
+            opacity: 0.95;
+            font-weight: 600;
         }
-        
+
         .whatsapp-btn {
             background: #25D366;
             color: white;
-            padding: 1rem 2rem;
-            border-radius: 12px;
+            padding: 1.2rem 2.5rem;
+            border-radius: 15px;
             border: none;
-            font-weight: 600;
-            font-size: 1.1rem;
+            font-weight: 700;
+            font-size: 1.2rem;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 12px;
             width: 100%;
-            transition: all 0.3s ease;
-            margin-top: 1rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-top: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
         }
-        
+
+        .whatsapp-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .whatsapp-btn:hover::before {
+            width: 400px;
+            height: 400px;
+        }
+
         .whatsapp-btn:hover {
             background: #128C7E;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(37, 211, 102, 0.3);
             color: white;
         }
-        
+
         .bulk-order-card {
             background: white;
-            border: 2px solid var(--accent-green);
-            border-radius: 20px;
-            padding: 2rem;
-            margin-top: 2rem;
+            border: 3px solid var(--secondary-green);
+            border-radius: 25px;
+            padding: 40px;
+            margin-top: 30px;
+            box-shadow: 0 20px 50px rgba(139, 69, 19, 0.1);
+            position: relative;
+            overflow: hidden;
         }
-        
+
+        .bulk-order-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradient-primary);
+        }
+
         .bulk-order-card h4 {
-            color: var(--accent-green);
-            margin-bottom: 1rem;
+            color: var(--secondary-green);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
         }
-        
+
         .order-steps {
             display: flex;
             justify-content: space-between;
-            margin: 3rem 0;
+            margin: 40px 0;
             flex-wrap: wrap;
-            gap: 2rem;
+            gap: 30px;
         }
-        
+
         .step {
             flex: 1;
-            min-width: 250px;
+            min-width: 280px;
             text-align: center;
-            padding: 2rem;
+            padding: 35px 25px;
             background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(139, 69, 19, 0.08);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(139, 69, 19, 0.08);
+            border: 2px solid var(--primary-cream);
+            transition: all 0.3s ease;
+            position: relative;
         }
-        
+
+        .step::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradient-primary);
+        }
+
+        .step:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 25px 50px rgba(255, 107, 53, 0.2);
+        }
+
         .step-number {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--primary-gold), var(--primary-orange));
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
             color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 800;
-            font-size: 1.5rem;
-            margin: 0 auto 1rem;
+            font-weight: 900;
+            font-size: 1.8rem;
+            margin: 0 auto 20px;
+            box-shadow: 0 10px 25px rgba(255, 107, 53, 0.3);
         }
-        
+
         .faq-section {
-            background: var(--light-cream);
-            padding: 5rem 0;
-            margin-top: 3rem;
+            padding: 100px 0;
+            background: var(--primary-cream);
+            position: relative;
         }
-        
+
+        .faq-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradient-primary);
+        }
+
         .faq-item {
             background: white;
-            border-radius: 15px;
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-            box-shadow: 0 5px 15px rgba(139, 69, 19, 0.05);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(139, 69, 19, 0.08);
+            border: 2px solid var(--primary-cream);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
-        
+
+        .faq-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(139, 69, 19, 0.15);
+        }
+
         .faq-question {
-            color: var(--secondary-spice);
-            font-weight: 600;
+            color: var(--primary-red);
+            font-weight: 700;
+            font-size: 1.2rem;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        
+
         .faq-answer {
-            color: var(--text-medium);
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid var(--light-cream);
+            color: var(--primary-brown);
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid var(--primary-cream);
+            font-size: 1.1rem;
+            line-height: 1.8;
         }
-        
+
         .product-specs {
             background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            margin-top: 2rem;
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 30px;
+            box-shadow: 0 20px 50px rgba(139, 69, 19, 0.1);
+            border: 2px solid var(--primary-cream);
         }
-        
+
         .spec-table {
             width: 100%;
-            border-collapse: collapse;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: 15px;
+            overflow: hidden;
         }
-        
+
         .spec-table th {
-            background: var(--light-cream);
-            padding: 1rem;
+            background: var(--gradient-primary);
+            padding: 20px;
             text-align: left;
-            color: var(--secondary-spice);
-            border-bottom: 2px solid var(--primary-orange);
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
         }
-        
+
         .spec-table td {
-            padding: 1rem;
-            border-bottom: 1px solid var(--light-cream);
-            color: var(--text-medium);
+            padding: 20px;
+            border-bottom: 2px solid var(--primary-cream);
+            color: var(--primary-brown);
+            font-size: 1.1rem;
         }
-        
+
         .spec-table tr:hover {
-            background: rgba(255, 154, 60, 0.05);
+            background: rgba(255, 107, 53, 0.05);
         }
-        
+
         .storage-tips {
             background: linear-gradient(135deg, rgba(58, 125, 52, 0.1), rgba(93, 187, 99, 0.1));
-            border-left: 4px solid var(--accent-green);
-            padding: 2rem;
-            border-radius: 0 15px 15px 0;
-            margin: 2rem 0;
+            border-left: 5px solid var(--secondary-green);
+            padding: 35px;
+            border-radius: 0 20px 20px 0;
+            margin: 30px 0;
         }
-        
+
         .product-highlight {
-            background: linear-gradient(135deg, rgba(255, 204, 41, 0.1), rgba(255, 154, 60, 0.1));
-            padding: 1.5rem;
-            border-radius: 15px;
-            margin: 1.5rem 0;
-            border-left: 4px solid var(--accent-yellow);
+            background: linear-gradient(135deg, rgba(255, 209, 102, 0.1), rgba(255, 107, 53, 0.1));
+            padding: 25px;
+            border-radius: 20px;
+            margin: 25px 0;
+            border-left: 5px solid var(--primary-yellow);
         }
-        
+
         @media (max-width: 768px) {
             .products-hero {
-                padding: 80px 0 30px;
+                padding: 100px 0 40px;
                 margin-top: 70px;
             }
-            
+
+            .product-filters {
+                padding: 30px 0;
+                top: 70px;
+            }
+
             .order-steps {
                 flex-direction: column;
             }
-            
+
             .product-detail-card {
-                padding: 1.5rem;
+                padding: 30px 25px;
             }
-            
+
             .pricing-card {
-                padding: 1.5rem;
+                padding: 30px 25px;
+            }
+
+            .product-specs {
+                padding: 25px 20px;
+            }
+
+            .spec-table th,
+            .spec-table td {
+                padding: 15px 10px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .btn-filter {
+                padding: 10px 20px;
+                font-size: 1rem;
+                margin: 5px;
+            }
+
+            .product-detail-card {
+                padding: 25px 20px;
+            }
+
+            .info-item {
+                padding: 20px;
+            }
+
+            .price {
+                font-size: 2.8rem;
             }
         }
     </style>
@@ -241,8 +456,8 @@
         <div class="container">
             <a class="navbar-brand" href="index.html">
                 <div class="brand-logo">
-                    <i class="bi bi-snow2"></i>
-                    <span>Thanjai</span>
+                    <i class="bi bi-fire"></i>
+                    <span>TANJO</span>
                 </div>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -263,7 +478,7 @@
                         <a class="nav-link" href="contact.html">Contact</a>
                     </li>
                     <li class="nav-item ms-3">
-                        <a href="#order" class="btn btn-order">
+                        <a href="#order" class="btn btn-order animate__pulse animate__animated animate__infinite">
                             <i class="bi bi-cart-check me-2"></i>Order Now
                         </a>
                     </li>
@@ -277,16 +492,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 mx-auto">
-                    <span class="section-tag">Premium Quality</span>
-                    <h1 class="hero-title">Our Premium Frozen Food Collection</h1>
-                    <p class="lead">Authentic Indian flavors, frozen at peak freshness. Each product is crafted with traditional recipes and modern freezing technology.</p>
+                    <span class="section-tag animate__animated animate__fadeInUp">Premium Quality</span>
+                    <h1 class="hero-title animate__animated animate__fadeInUp">Our Premium Frozen Food Collection</h1>
+                    <p class="lead animate__animated animate__fadeInUp animate__delay-1s">Authentic Indian flavors, frozen at peak freshness. Each product is crafted with traditional recipes and modern freezing technology.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Product Filters -->
-    <section class="py-4 bg-white">
+    <section class="product-filters">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -308,7 +523,7 @@
             <div class="row g-4" id="productGrid">
                 <!-- Product 1: Frozen Samosa -->
                 <div class="col-lg-4 col-md-6 product-item" data-category="samosa best-seller">
-                    <div class="product-card featured">
+                    <div class="product-card featured animate__animated animate__fadeInUp">
                         <div class="product-image">
                             <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
                                  alt="Frozen Samosa">
@@ -318,9 +533,9 @@
                             <h3>Frozen Samosa</h3>
                             <p>Crispy golden pastry filled with perfectly spiced potatoes and peas. Ready to cook in minutes.</p>
                             <ul class="product-features">
-                                <li><i class="bi bi-check"></i> 100% Vegetarian</li>
-                                <li><i class="bi bi-check"></i> Ready in 15 minutes</li>
-                                <li><i class="bi bi-check"></i> No artificial preservatives</li>
+                                <li><i class="bi bi-check-circle"></i> 100% Vegetarian</li>
+                                <li><i class="bi bi-check-circle"></i> Ready in 15 minutes</li>
+                                <li><i class="bi bi-check-circle"></i> No artificial preservatives</li>
                             </ul>
                             <div class="product-meta">
                                 <span class="pack-size">From $12.99</span>
@@ -334,7 +549,7 @@
 
                 <!-- Product 2: Frozen Parotta -->
                 <div class="col-lg-4 col-md-6 product-item" data-category="parotta best-seller">
-                    <div class="product-card popular">
+                    <div class="product-card popular animate__animated animate__fadeInUp animate__delay-1s">
                         <div class="product-image">
                             <img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
                                  alt="Frozen Parotta">
@@ -344,9 +559,9 @@
                             <h3>Frozen Parotta</h3>
                             <p>Flaky, layered Indian flatbread with authentic texture. Pre-cooked and frozen for convenience.</p>
                             <ul class="product-features">
-                                <li><i class="bi bi-check"></i> Easy to prepare</li>
-                                <li><i class="bi bi-check"></i> Authentic recipe</li>
-                                <li><i class="bi bi-check"></i> Long shelf life</li>
+                                <li><i class="bi bi-check-circle"></i> Easy to prepare</li>
+                                <li><i class="bi bi-check-circle"></i> Authentic recipe</li>
+                                <li><i class="bi bi-check-circle"></i> Long shelf life</li>
                             </ul>
                             <div class="product-meta">
                                 <span class="pack-size">From $8.99</span>
@@ -360,7 +575,7 @@
 
                 <!-- Product 3: Frozen Coconut -->
                 <div class="col-lg-4 col-md-6 product-item" data-category="coconut">
-                    <div class="product-card new">
+                    <div class="product-card new animate__animated animate__fadeInUp animate__delay-2s">
                         <div class="product-image">
                             <img src="https://images.unsplash.com/photo-1628992682633-bf2d40cb595f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
                                  alt="Frozen Coconut">
@@ -370,9 +585,9 @@
                             <h3>Frozen Coconut</h3>
                             <p>Premium grated coconut, flash-frozen to retain natural moisture and flavor for authentic dishes.</p>
                             <ul class="product-features">
-                                <li><i class="bi bi-check"></i> Preserved freshness</li>
-                                <li><i class="bi bi-check"></i> No additives</li>
-                                <li><i class="bi bi-check"></i> Convenient packaging</li>
+                                <li><i class="bi bi-check-circle"></i> Preserved freshness</li>
+                                <li><i class="bi bi-check-circle"></i> No additives</li>
+                                <li><i class="bi bi-check-circle"></i> Convenient packaging</li>
                             </ul>
                             <div class="product-meta">
                                 <span class="pack-size">From $6.99</span>
@@ -388,11 +603,11 @@
     </section>
 
     <!-- Detailed Product Information -->
-    <section class="py-5 bg-light-cream" id="order">
+    <section class="product-detail-section" id="order">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
-                    <div class="product-detail-card">
+                    <div class="product-detail-card animate__animated animate__fadeInLeft">
                         <div class="row align-items-center">
                             <div class="col-md-6">
                                 <div class="product-highlight">
@@ -434,7 +649,7 @@
                     </div>
 
                     <!-- Product Specifications -->
-                    <div class="product-specs">
+                    <div class="product-specs animate__animated animate__fadeInUp">
                         <h3 class="section-title mb-4">Product Specifications</h3>
                         <div class="table-responsive">
                             <table class="spec-table">
@@ -475,7 +690,7 @@
                     </div>
 
                     <!-- Storage Tips -->
-                    <div class="storage-tips">
+                    <div class="storage-tips animate__animated animate__fadeInUp">
                         <h4><i class="bi bi-info-circle me-2"></i>Storage & Handling Tips</h4>
                         <ul class="mt-3">
                             <li>Store at -18°C or below in freezer</li>
@@ -489,7 +704,7 @@
 
                 <div class="col-lg-4">
                     <!-- Bulk Order Card -->
-                    <div class="bulk-order-card">
+                    <div class="bulk-order-card animate__animated animate__fadeInRight">
                         <h4><i class="bi bi-building me-2"></i>Bulk Orders</h4>
                         <p>For restaurants, caterers, institutions, and wholesale buyers.</p>
                         <ul class="mt-3">
@@ -505,17 +720,17 @@
 
                     <!-- Order Steps -->
                     <div class="order-steps">
-                        <div class="step">
+                        <div class="step animate__animated animate__fadeInUp">
                             <div class="step-number">1</div>
                             <h5>Choose Product</h5>
                             <p class="small">Select your preferred product and quantity</p>
                         </div>
-                        <div class="step">
+                        <div class="step animate__animated animate__fadeInUp animate__delay-1s">
                             <div class="step-number">2</div>
                             <h5>WhatsApp Order</h5>
                             <p class="small">Message us your order details via WhatsApp</p>
                         </div>
-                        <div class="step">
+                        <div class="step animate__animated animate__fadeInUp animate__delay-2s">
                             <div class="step-number">3</div>
                             <h5>Receive Delivery</h5>
                             <p class="small">Get delivery at your doorstep across Canada</p>
@@ -523,7 +738,7 @@
                     </div>
 
                     <!-- Delivery Info -->
-                    <div class="info-item">
+                    <div class="info-item animate__animated animate__fadeInUp">
                         <h5><i class="bi bi-truck text-info me-2"></i>Delivery Information</h5>
                         <p class="mb-2"><strong>Shipping:</strong> Across Canada</p>
                         <p class="mb-2"><strong>Processing:</strong> 24-48 hours</p>
@@ -564,7 +779,7 @@
             
             <div class="row">
                 <div class="col-lg-8 mx-auto">
-                    <div class="faq-item">
+                    <div class="faq-item animate__animated animate__fadeInUp">
                         <div class="faq-question" onclick="toggleFAQ(this)">
                             How do I order via WhatsApp?
                             <i class="bi bi-chevron-down"></i>
@@ -574,7 +789,7 @@
                         </div>
                     </div>
                     
-                    <div class="faq-item">
+                    <div class="faq-item animate__animated animate__fadeInUp animate__delay-1s">
                         <div class="faq-question" onclick="toggleFAQ(this)">
                             What are your delivery areas?
                             <i class="bi bi-chevron-down"></i>
@@ -584,7 +799,7 @@
                         </div>
                     </div>
                     
-                    <div class="faq-item">
+                    <div class="faq-item animate__animated animate__fadeInUp animate__delay-2s">
                         <div class="faq-question" onclick="toggleFAQ(this)">
                             How do I store your frozen products?
                             <i class="bi bi-chevron-down"></i>
@@ -594,7 +809,7 @@
                         </div>
                     </div>
                     
-                    <div class="faq-item">
+                    <div class="faq-item animate__animated animate__fadeInUp animate__delay-3s">
                         <div class="faq-question" onclick="toggleFAQ(this)">
                             Do you offer bulk discounts?
                             <i class="bi bi-chevron-down"></i>
@@ -604,7 +819,7 @@
                         </div>
                     </div>
                     
-                    <div class="faq-item">
+                    <div class="faq-item animate__animated animate__fadeInUp animate__delay-4s">
                         <div class="faq-question" onclick="toggleFAQ(this)">
                             What payment methods do you accept?
                             <i class="bi bi-chevron-down"></i>
@@ -625,8 +840,8 @@
                 <div class="col-lg-4 mb-4">
                     <div class="footer-brand">
                         <div class="brand-logo">
-                            <i class="bi bi-snow2"></i>
-                            <span>Thanjai</span>
+                            <i class="bi bi-fire"></i>
+                            <span>TANJO</span>
                         </div>
                         <p class="mt-3">Premium frozen foods bringing authentic Indian flavors to Canadian tables since 2010.</p>
                         <div class="social-links">
@@ -658,9 +873,9 @@
                 <div class="col-lg-3 col-md-4 mb-4">
                     <h5>Contact Info</h5>
                     <ul class="footer-links">
-                        <li><i class="bi bi-geo-alt me-2"></i> Toronto, Ontario</li>
-                        <li><i class="bi bi-telephone me-2"></i> +1 (416) 555-7890</li>
-                        <li><i class="bi bi-envelope me-2"></i> info@thanjai.ca</li>
+                        <li><i class="bi bi-geo-alt me-2"></i> Montreal, Quebec</li>
+                        <li><i class="bi bi-telephone me-2"></i> +1 (514) 833-8332</li>
+                        <li><i class="bi bi-envelope me-2"></i> info@tanjofoods.ca</li>
                         <li><i class="bi bi-clock me-2"></i> Mon-Fri: 9AM-6PM EST</li>
                     </ul>
                 </div>
@@ -668,7 +883,7 @@
             <div class="footer-bottom">
                 <div class="row align-items-center">
                     <div class="col-md-6">
-                        <p class="mb-0">&copy; 2023 Thanjai Frozen Foods. All rights reserved.</p>
+                        <p class="mb-0">&copy; 2023 TANJO Premium Foods. All rights reserved.</p>
                     </div>
                     <div class="col-md-6">
                         <ul class="footer-bottom-links">
@@ -696,7 +911,7 @@
                         <h4 class="mt-3">Ready to Order?</h4>
                         <p>Click the button below to open WhatsApp and send your order details.</p>
                         <div class="mt-4">
-                            <a href="https://wa.me/14165557890?text=Hello%20Thanjai%20Frozen%20Foods!%20I%20would%20like%20to%20place%20an%20order." 
+                            <a href="https://wa.me/15148338332?text=Hello%20TANJO%20Premium%20Foods!%20I%20would%20like%20to%20place%20an%20order." 
                                class="whatsapp-btn" target="_blank">
                                 <i class="bi bi-whatsapp"></i> Open WhatsApp
                             </a>
@@ -715,12 +930,12 @@
     <script>
         // WhatsApp Integration Script
         document.addEventListener('DOMContentLoaded', function() {
-            // Default WhatsApp number (Canadian format)
-            const whatsappNumber = "14165557890"; // +1 (416) 555-7890
+            // TANJO WhatsApp number
+            const whatsappNumber = "15148338332"; // +1 (514) 833-8332
             
             // Function to create WhatsApp order link
             function createWhatsAppLink(productName = "", productType = "") {
-                let message = "Hello Thanjai Frozen Foods! I would like to place an order.";
+                let message = "Hello TANJO Premium Foods! I would like to place an order.";
                 
                 if (productName) {
                     message += `\n\nProduct: ${productName}`;
@@ -778,7 +993,7 @@
             
             // Bulk order button
             document.getElementById('whatsappBulkBtn')?.addEventListener('click', function() {
-                const message = "Hello Thanjai Frozen Foods! I would like to inquire about bulk/wholesale pricing.";
+                const message = "Hello TANJO Premium Foods! I would like to inquire about bulk/wholesale pricing.";
                 const encodedMessage = encodeURIComponent(message);
                 window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
             });
@@ -862,7 +1077,7 @@
         
         // Simple WhatsApp order function for direct calls
         function orderViaWhatsApp(productName = "", price = "") {
-            let message = `Hello Thanjai Frozen Foods! I would like to order:\n\n`;
+            let message = `Hello TANJO Premium Foods! I would like to order:\n\n`;
             
             if (productName) {
                 message += `Product: ${productName}\n`;
@@ -874,7 +1089,7 @@
             message += `\nPlease contact me with availability and delivery options to my location in Canada.\n\nThank you!`;
             
             const encodedMessage = encodeURIComponent(message);
-            const whatsappUrl = `https://wa.me/14165557890?text=${encodedMessage}`;
+            const whatsappUrl = `https://wa.me/15148338332?text=${encodedMessage}`;
             
             window.open(whatsappUrl, '_blank');
             return false;
